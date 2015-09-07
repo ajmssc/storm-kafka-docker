@@ -1,3 +1,14 @@
+### flask app
+web:
+  build: ./web
+  ports:
+   - "5000:5000"
+  volumes:
+   - ./web:/code
+
+
+
+### cluster
 zookeeper:
   image: jplock/zookeeper
   ports: 
@@ -31,24 +42,25 @@ kafka1:
   links:
     - zookeeper:zk
   environment:
-    BROKER_ID: 1
-    HOST_IP: 192.168.99.101
-    PORT: 9092
+#    HOST_IP: 192.168.99.101
+#    PORT: 9092
     KAFKA_HOST_NAME: stormkafkadocker_kafka1_1
+    KAFKA_BROKER_ID: 1
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
-#kafka2:
-#  image: wurstmeister/kafka:0.8.2.0
-#  ports:
-#    - "9093:9093"
-#  links:
-#    - zookeeper:zk
-#  environment:
-#    BROKER_ID: 2
+kafka2:
+  image: wurstmeister/kafka:0.8.2.0
+  ports:
+    - "9093:9092"
+  links:
+    - zookeeper:zk
+  environment:
 #    HOST_IP: 192.168.99.101
-#    PORT: 9093
-#  volumes:
-#    - /var/run/docker.sock:/var/run/docker.sock
+#    PORT: 9092
+    KAFKA_HOST_NAME: stormkafkadocker_kafka2_1
+    KAFKA_BROKER_ID: 2
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
 #openfire:
 #  image: mdouglas/openfire
 #  ports:
