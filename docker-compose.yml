@@ -34,7 +34,7 @@ kafka1:
     BROKER_ID: 1
     HOST_IP: 192.168.99.101
     PORT: 9092
-    KAFKA_HOST_NAME: logkafkastorm_kafka1_1
+    KAFKA_HOST_NAME: stormkafkadocker_kafka1_1
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
 #kafka2:

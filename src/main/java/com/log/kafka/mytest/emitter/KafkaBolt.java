@@ -26,7 +26,7 @@ public class KafkaBolt implements IRichBolt {
         _collector = collector;
 
         Properties props = new Properties();
-        props.put("metadata.broker.list", "logkafkastorm_kafka1_1:9092");
+        props.put("metadata.broker.list", "stormkafkadocker_kafka1_1:9092");
         props.put("serializer.class", "kafka.serializer.StringEncoder");
         //props.put("producer.type","async");
 //        props.put("retry.backoff.ms", "150");

@@ -33,7 +33,7 @@ public class EmitterTopology {
 
     TopologyBuilder builder = new TopologyBuilder();
     builder.setSpout("words", new TestWordSpout(), 10);
-    builder.setBolt("exclaim1", new KafkaBolt(), 3)
+    builder.setBolt("kafka", new KafkaBolt(), 3)
             .shuffleGrouping("words");
     return builder.createTopology();
   }
